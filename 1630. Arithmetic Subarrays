@@ -1,0 +1,16 @@
+class Solution:
+    def checkArithmeticSubarrays(self, nums, l, r):
+        new_list=[]
+        for i in range(len(l)):
+            ref=[]
+            for j in range(l[i],(r[i])+1):
+                ref.append(nums[j]) 
+            ref.sort()
+            for k in range(len(ref)-1):
+                delta=ref[1]-ref[0]
+                if(delta!=(ref[k+1]-ref[k])): 
+                    boolean=False
+                    break
+                else: boolean=True
+            new_list.append(boolean)
+        return new_list
