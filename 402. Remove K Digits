@@ -1,0 +1,13 @@
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        st=[]
+        for i in (num):
+            while st and k>0 and int(st[-1]) > int(i):
+                k-=1
+                st.pop()   
+            st.append(i)
+        st=st[:len(st)-k] 
+        ans=''.join(st)
+        return str(int(ans)) if st else '0'
+                    
+            
