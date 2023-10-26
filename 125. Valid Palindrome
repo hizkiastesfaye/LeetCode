@@ -1,0 +1,20 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        n1 = len(s) - 1
+        n2 = 0
+        while n1 > n2:
+            if not( (s[n2] >= 'a' and s[n2] <= 'z') or (s[n2] >= '0' and s[n2] <= '9')):
+                n2 += 1
+                continue
+            if not ((s[n1] >= "a" and s[n1] <= "z")  or (s[n1] >= '0' and s[n1] <= '9')):
+                n1 -= 1
+                continue
+            if s[n1] == s[n2]:
+                n1 -= 1
+                n2 += 1
+            else: 
+                print(n1, n2)
+                print(s[n1], s[n2])
+                return False
+        return True
