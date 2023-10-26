@@ -1,0 +1,17 @@
+class Solution(object):
+    def merge(self, intervals):
+        intervals.sort(key=lambda x: x[0])
+        Arr = []
+
+        interval = intervals[0]
+        
+        for i in range(1, len(intervals)):
+            if interval[1] >= intervals[i][0]:
+                interval[1] = max(interval[1], intervals[i][1])
+            else:
+                Arr.append(interval)
+                interval = intervals[i]
+        
+        Arr.append(interval)
+        
+        return Arr
