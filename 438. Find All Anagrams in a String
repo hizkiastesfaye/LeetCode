@@ -1,0 +1,18 @@
+class Solution(object):
+    def findAnagrams(self, s, p):
+        if len(p)>len(s):return []
+        count1,count2={},{}
+        for i in range(len(p)):
+            count2[p[i]]=1+count2.get(p[i],0)
+            count1[s[i]]=1+count1.get(s[i],0)
+        respond=[0] if count2==count1 else []
+        l=0
+        for r in range(len(p),len(s)):
+            count1[s[r]]=1+count1.get(s[r],0)
+            count1[s[l]]-=1
+            if count1[s[l]]==0:
+                count1.pop(s[l])
+            l+=1
+            if count1==count2:
+                respond.append(l)
+        return respond
