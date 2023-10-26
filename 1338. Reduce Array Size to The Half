@@ -1,0 +1,11 @@
+class Solution:
+    def minSetSize(self, arr):
+        numb=Counter(arr)
+        n1=len(arr)
+        v=0
+        ans=0
+        for key,val in sorted(numb.items(),key=lambda x: -x[1]):
+            v+=val
+            ans+=1
+            if(v>=(n1//2)): break
+        return ans
