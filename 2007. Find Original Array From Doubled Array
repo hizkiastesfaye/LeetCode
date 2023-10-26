@@ -1,0 +1,13 @@
+class Solution(object):
+    def findOriginalArray(self,changed):
+        c1=Counter(changed)
+        res=[]
+        changed.sort()
+        for num in changed:
+            if c1[num]==0:continue
+            if c1[2*num]==0: return []
+            if num==0 and c1[num]<=1:return []
+            res.append(num)
+            c1[num]-=1
+            c1[2*num]-=1
+        return res
